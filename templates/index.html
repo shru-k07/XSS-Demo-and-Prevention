@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}
+<section class="hero"><h1>Understand XSS. Learn to prevent it.</h1><p>A simple interactive web application that demonstrates Cross-Site Scripting and secure output handling.</p>
+{% if session.get('user_id') %}<a class="button" href="{{ url_for('dashboard') }}">Open Dashboard</a>{% else %}<a class="button" href="{{ url_for('register') }}">Get Started</a>{% endif %}</section>
+<div class="grid"><article><h3>What is XSS?</h3><p>Cross-Site Scripting is a web security weakness where untrusted input is treated as executable browser content.</p></article><article><h3>Safe rendering</h3><p>Templates automatically escape untrusted text so it appears as text rather than active HTML or JavaScript.</p></article><article><h3>Learn by testing</h3><p>Compare a safe preview with a deliberately vulnerable local-only demonstration.</p></article></div>{% endblock %}
