@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title or "XSS Demo & Prevention" }}</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><header><a class="brand" href="{{ url_for('home') }}">XSS Demo & Prevention</a>
+<nav><a href="{{ url_for('home') }}">Home</a>{% if session.get('user_id') %}<a href="{{ url_for('dashboard') }}">Dashboard</a><a href="{{ url_for('lab') }}">XSS Lab</a><form class="inline" method="post" action="{{ url_for('logout') }}"><input type="hidden" name="_csrf_token" value="{{ csrf_token }}"><button class="navbutton">Logout</button></form>{% else %}<a href="{{ url_for('login') }}">Login</a><a href="{{ url_for('register') }}">Register</a>{% endif %}</nav></header>
+<main>{% with items = get_flashed_messages() %}{% for item in items %}<div class="flash">{{ item }}</div>{% endfor %}{% endwith %}{% block content %}{% endblock %}</main>
+<footer>Cybersecurity mini project · Run locally for learning</footer></body></html>
